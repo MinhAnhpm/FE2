@@ -1,0 +1,34 @@
+<body>
+<div id="box" style="overflow:auto;white-space:nowrap;text-align:right"></div>
+<script>
+function loadImagesInSequence(images) {
+    var count = 0, html = '', iBlock = ''; 
+    var i, len = images.length;
+    for(i = 0;i < len;i++) {
+        iBlock += '<img src="'+ images[i] +'" title="['+ i +']" style="display:block;width:100%" />';
+        count++;
+        if (count == 3) {
+            if (i != (len - 1)) {
+                html = '<div style="display:inline-block;width:10%;vertical-align:top">'+ iBlock +'</div>'+ html;
+                iBlock = '';
+            }
+            count = 0;
+        }
+    }
+    if (iBlock != '') {
+        html = '<div style="display:inline-block;width:10%;vertical-align:top">'+ iBlock +'</div>'+ html;
+    }
+    document.getElementById('box').innerHTML = html;
+}
+
+loadImagesInSequence([
+'imgs/sample_2016-04-29-23-00-29-794.png',
+'imgs/sample_2016-05-04-17-49-17-927.png', 
+'imgs/sample_2016-05-04-17-59-00-325.png',
+'imgs/sample_2016-05-08-15-28-02-630.png', 
+'imgs/sample_2016-05-08-15-37-26-939.png', 
+'imgs/sample_2016-05-08-15-47-37-141.png', 
+'imgs/sample_2016-05-08-16-06-15-130.png', 
+'imgs/sample_2016-05-08-16-07-57-144.png', 
+'imgs/sample_2016-05-08-16-10-49-457.png', 
+'imgs/sample_2016-05-08-16-35-27-171.png']);
